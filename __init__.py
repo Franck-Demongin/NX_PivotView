@@ -85,24 +85,26 @@ class OBJECT_OT_pivotView(bpy.types.Operator):
 
 
 def menu_func(self, context):
-    self.layout.operator(OBJECT_OT_pivotView.bl_idname, text=OBJECT_OT_pivotView.bl_label)
+    layout = self.layout
+    pie = layout.menu_pie()
+    pie.operator(OBJECT_OT_pivotView.bl_idname, text=OBJECT_OT_pivotView.bl_label, icon="CON_PIVOT")
 
 addon_keymaps = []
 
 def register():
     bpy.utils.register_class(OBJECT_OT_pivotView)
-    bpy.types.VIEW3D_MT_view.append(menu_func)
+    bpy.types.VIEW3D_MT_pivot_pie.append(menu_func)
     
     wm = bpy.context.window_manager
     kc = wm.keyconfigs.addon
     if kc:
         km = wm.keyconfigs.addon.keymaps.new(name='3D View', space_type='VIEW_3D')
-        kmi = km.keymap_items.new(OBJECT_OT_pivotView.bl_idname, type='SEMI_COLON', value='PRESS', ctrl=True)
+        kmi = km.keymap_items.new(OBJECT_OT_pivotView.bl_idname, type='W', value='PRESS', shift=True)
         addon_keymaps.append((km, kmi))
 
 def unregister():
     bpy.utils.unregister_class(OBJECT_OT_pivotView)
-    bpy.types.VIEW3D_MT_view.remove(menu_func)
+    bpy.types.VIEW3D_MT_pivot_pie.remove(menu_func)
     
     for km, kmi in addon_keymaps:
         km.keymap_items.remove(kmi)
