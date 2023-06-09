@@ -14,4 +14,4 @@ Activate the addon
 
 ## Usage
 
-In 3D View, menu View > Pivot View (Ctrl ;). Click in the viewport where you want to set the pivot view. Validate by pressing ENTER or SPACE. Cancel by pressing ESC or right click.
+In 3D View, menu View > Pivot View (Shift W). Click in the viewport where you want to set the pivot view. Validate by pressing ENTER or SPACE. Cancel by pressing ESC or right click.
